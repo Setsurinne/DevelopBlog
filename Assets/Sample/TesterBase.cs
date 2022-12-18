@@ -7,10 +7,16 @@ namespace Sample
 {
     public class TesterBase : MonoBehaviour
     {
-        public string sampleId = "tester";
+        [Header("Key to trigger the test")]
         public KeyCode testKey = KeyCode.A;
-        public float pauseWait = 0;
+
+        [Header("If need to pause the application after trigger testing?")]
+        public bool doPauseAfterTest = true;
         
+        [Header("Time before pause the application")]
+        public float pauseWait = 0;
+        //public string sampleId = "tester";
+
         private void Update()
         {
             if (Input.GetKeyUp(testKey))
@@ -23,8 +29,14 @@ namespace Sample
         public void RunTest()
         {
             //Profiler.BeginSample(sampleId);
+            
             DoTest();
-            StartCoroutine(StopApplication());
+
+            if (doPauseAfterTest)
+            {
+                StartCoroutine(StopApplication());
+            }
+            
             //Profiler.EndSample();
         }
 

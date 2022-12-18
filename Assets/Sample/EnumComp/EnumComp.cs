@@ -31,6 +31,9 @@ public class EnumComp : TesterBase
         DictOperation();
     }
 
+    /// <summary>
+    /// Do some hashcode-required method
+    /// </summary>
     private void DictOperation()
     {
         if (!DummyDict.ContainsKey(MyEnum.DummyEnum))
@@ -45,6 +48,10 @@ public class EnumComp : TesterBase
     }
 }
 
+
+/// <summary>
+/// Specify a comparer to avoid default comparer in Dict
+/// </summary>
 public class MyEnumComparer : IEqualityComparer<MyEnum>
 {
     public bool Equals(MyEnum x, MyEnum y)
